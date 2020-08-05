@@ -13,7 +13,11 @@ public class PersonManager {
 
     }
 
-    public List<Person> findStatic(int id) {
-        return PersonStatic.find(id);
+    public List<Person> findStatic() {
+        return PersonStatic.find();
+    }
+
+    public List<Person> findStaticCovered() {
+        return PersonStatic.findCovered();
     }
 }
