@@ -8,11 +8,10 @@ import java.util.List;
  */
 public class PersonDao {
 
-    public List<Person> findPeople(final int id) {
+    public List<Person> find(final int id) {
         List<Person> ppl = new ArrayList<>();
         ppl.add(new Person("smith", 20));
         ppl.add(new Person("adam", 33));
-
         return ppl;
     }
 }
