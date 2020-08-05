@@ -9,221 +9,182 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-    <jacoco.version>0.7.9</jacoco.version>
-    <sonar.scanner.version>3.3.0.603</sonar.scanner.version>
-    <!-- Used to locate the profile specific configuration file. -->
-    <build.profile.id>dev</build.profile.id>
+        <!--Jacoco version-->
+        <jacoco.version>0.7.4.201502262128</jacoco.version>
+        <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
+        <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
 
-    <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
-    <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+        <sonar.scanner.version>3.3.0.603</sonar.scanner.version>
 
-    <jdk.version>1.8</jdk.version>
+        <!--Sonar coverage related properties-->
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.jacoco.reportPaths>${project.basedir}/target/coverage.exec</sonar.jacoco.reportPaths>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco-ut.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
 
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.12</junit.version>
 
-    <!-- Only unit tests are run by default. -->
-    <skip.unit.tests>false</skip.unit.tests>
+        <powermock.version>1.7.0</powermock.version>
 
-    <powermock.version>1.7.0</powermock.version>
-    <maven.compiler.source>1.6</maven.compiler.source>
-    <maven.compiler.target>1.6</maven.compiler.target>
-    <mockito1.version>1.10.19</mockito1.version>
-    <mockito2.version>2.8.9</mockito2.version>
-    <easymock.version>3.4</easymock.version>
-    <assertj-core.version>3.8.0</assertj-core.version>
-    <junit.version>4.12</junit.version>
-    <spring.version>3.0.5.RELEASE</spring.version>
-    <commons-lang3.version>3.4</commons-lang3.version>
+        <jdk.version>1.8</jdk.version>
 
-     <sonar.jacoco.reportPaths>${project.basedir}/target/coverage.exec</sonar.jacoco.reportPaths>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-         </properties>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>2.12.4</maven-failsafe-plugin.version>
 
-         <dependencies>
-             <dependency>
-                 <groupId>org.assertj</groupId>
-                 <artifactId>assertj-core</artifactId>
-                 <version>${assertj-core.version}</version>
-                 <scope>test</scope>
-             </dependency>
-             <dependency>
-                 <groupId>junit</groupId>
-                 <artifactId>junit</artifactId>
-                 <scope>test</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.powermock</groupId>
-                 <artifactId>powermock-api-mockito</artifactId>
-             </dependency>
-             <dependency>
-                 <groupId>org.powermock</groupId>
-                 <artifactId>powermock-core</artifactId>
-             </dependency>
-             <dependency>
-                 <groupId>org.powermock</groupId>
-                 <artifactId>powermock-module-junit4</artifactId>
-             </dependency>
-             <dependency>
-                 <groupId>org.jacoco</groupId>
-                 <artifactId>org.jacoco.agent</artifactId>
-                 <version>${jacoco.version}</version>
-                 <classifier>runtime</classifier>
-             </dependency>
-             <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-core</artifactId>
-                     <version>${powermock.version}</version>
-                     <scope>test</scope>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-api-mockito</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-api-mockito2</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-api-mockito-common</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-api-support</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-module-junit4-rule</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-classloading-xstream</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-module-junit4-rule-agent</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-api-easymock</artifactId>
-                     <version>${powermock.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-module-testng</artifactId>
-                     <version>${powermock.version}</version>
-                     <scope>test</scope>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.powermock</groupId>
-                     <artifactId>powermock-module-junit4</artifactId>
-                     <version>${powermock.version}</version>
-                     <scope>test</scope>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.easymock</groupId>
-                     <artifactId>easymock</artifactId>
-                     <version>${easymock.version}</version>
-                     <scope>test</scope>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.mockito</groupId>
-                     <artifactId>mockito-core</artifactId>
-                     <version>${mockito1.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>junit</groupId>
-                     <artifactId>junit</artifactId>
-                     <version>${junit.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-core</artifactId>
-                     <version>${spring.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-context</artifactId>
-                     <version>${spring.version}</version>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-test</artifactId>
-                     <version>${spring.version}</version>
-                     <scope>test</scope>
-                 </dependency>
-                 <dependency>
-                     <groupId>org.apache.commons</groupId>
-                     <artifactId>commons-lang3</artifactId>
-                     <version>${commons-lang3.version}</version>
-                 </dependency>
-         </dependencies>
+        <skip.unit.tests>false</skip.unit.tests>
+    </properties>
 
-         <build>
-             <plugins>
-                 <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-compiler-plugin</artifactId>
-                     <version>3.1</version>
-                     <configuration>
-                         <source>${jdk.version}</source>
-                         <target>${jdk.version}</target>
-                         <encoding>${project.build.sourceEncoding}</encoding>
-                     </configuration>
-                 </plugin>
-                 <plugin>
-                     <groupId>org.jacoco</groupId>
-                     <artifactId>jacoco-maven-plugin</artifactId>
-                     <version>${jacoco.version}</version>
-                     <executions>
-                         <execution>
-                             <id>default-instrument</id>
-                             <goals>
-                                 <goal>instrument</goal>
-                             </goals>
-                         </execution>
-                         <execution>
-                             <id>default-restore-instrumented-classes</id>
-                             <goals>
-                                 <goal>restore-instrumented-classes</goal>
-                             </goals>
-                         </execution>
-                         <execution>
-                             <id>report</id>
-                             <phase>prepare-package</phase>
-                             <goals>
-                                 <goal>report</goal>
-                             </goals>
-                             <configuration>
-                                 <dataFile>${project.build.directory}/coverage.exec</dataFile>
-                             </configuration>
-                         </execution>
-                     </executions>
-                 </plugin>
-                 <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-surefire-plugin</artifactId>
-                     <version>2.19.1</version>
-                     <configuration>
-                         <systemPropertyVariables>
-                             <jacoco-agent.destfile>${project.build.directory}/coverage.exec</jacoco-agent.destfile>
-                         </systemPropertyVariables>
-                     </configuration>
-                 </plugin>
-                 <plugin>
-                     <groupId>org.sonarsource.scanner.maven</groupId>
-                     <artifactId>sonar-maven-plugin</artifactId>
-                     <version>${sonar.scanner.version}</version>
-                 </plugin>
-             </plugins>
-         </build>
+    <dependencies>
+        <!--Junit as test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--powermock API for Mockito-->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${powermock.version}</version>
+        </dependency>
+
+        <!--Jacoco required at runtime to build offline coverages-->
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <version>${jacoco.version}</version>
+            <classifier>runtime</classifier>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!--Jacoco offline instrument to work with powermock-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+
+
+                <executions>
+                    <!--Performs offline instrumentation.-->
+                    <execution>
+                        <id>default-instrument</id>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+
+                    <!--Restores original classes as they were before offline instrumentation.-->
+                    <execution>
+                        <id>default-restore-instrumented-classes</id>
+                        <goals>
+                            <goal>restore-instrumented-classes</goal>
+                        </goals>
+                    </execution>
+
+                    <!--Now for integration tests-->
+                    <!--Same as prepare-agent, but provides default values suitable for integration-tests:-->
+                    <execution>
+                        <id>prepare-it-agent</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <!--The path variable should not change.This is used by Sonar-->
+                            <destFile>${sonar.jacoco.itReportPath}</destFile>
+                            <append>true</append>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/coverage.exec</dataFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--END of jacoco plugin settings-->
+
+            <!--*** Maven surefire plugin to generate coverage file ***-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+
+                    <!--Exclude any Integration Test-->
+                    <!-- <excludes>
+                        <exclude>**/*Integration*Test*</exclude>
+                    </excludes> -->
+                    <!--Setup Jacoco Junit file path here-->
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>${project.build.directory}/coverage.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar.scanner.version}</version>
+            </plugin>
+
+            <!--Maven failsafe for Integration Test-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <!--Include only integration test here-->
+                    <includes>
+                        <include>**/*IntegrationTest*</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 
 </project>
