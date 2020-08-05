@@ -8,7 +8,14 @@ import java.util.List;
  */
 public class PersonStatic {
 
-    public static List<Person> find(final int id) {
+    public static List<Person> find() {
+        List<Person> ppl = new ArrayList<>();
+        ppl.add(new Person("smith", 20));
+        ppl.add(new Person("adam", 33));
+        return ppl;
+    }
+
+    public static List<Person> findCovered() {
         List<Person> ppl = new ArrayList<>();
         ppl.add(new Person("smith", 20));
         ppl.add(new Person("adam", 33));
