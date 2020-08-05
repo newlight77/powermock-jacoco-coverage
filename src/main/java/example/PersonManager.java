@@ -7,9 +7,13 @@ import java.util.List;
  */
 public class PersonManager {
 
-    public List<Person> findppl(int id) {
+    public List<Person> find(int id) {
         PersonDao personDao = new PersonDao();
-        return personDao.findPeople(id);
+        return personDao.find(id);
 
+    }
+
+    public List<Person> findStatic(int id) {
+        return PersonStatic.find(id);
     }
 }
