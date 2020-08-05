@@ -12,7 +12,7 @@ public class PersonManagerIntegrationTest {
     @Test
     public void test(){
         PersonManager personManager = new PersonManager();
-        List<Person> findppl = personManager.findppl(22);
+        List<Person> findppl = personManager.find(22);
         System.out.println(findppl);
 
     }
