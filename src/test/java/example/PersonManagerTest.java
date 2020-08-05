@@ -42,14 +42,26 @@ public class PersonManagerTest {
         PowerMockito.mockStatic(PersonStatic.class);
         List<Person> list = new ArrayList<>();
         list.add(new Person("joh", 22));
-        int id = 11;
 
-        PowerMockito.when(PersonStatic.find(id)).thenReturn(list);
+        PowerMockito.when(PersonStatic.find()).thenReturn(list);
 
         PersonManager personManager = new PersonManager();
-        List<Person> findppl = personManager.findStatic(id);
+        List<Person> findppl = personManager.findStatic();
         Assert.assertTrue(findppl.get(0).getName().equals("joh"));
         Assert.assertTrue(findppl.get(0).getAge()==22);
+
+    }
+
+    @Test
+    public void testStaticCovered() throws Exception {
+        PowerMockito.mockStatic(PersonStatic.class);
+
+        PowerMockito.doCallRealMethod().when(PersonStatic.class, "findCovered");
+
+        PersonManager personManager = new PersonManager();
+        List<Person> findppl = personManager.findStaticCovered();
+        Assert.assertTrue(findppl.get(0).getName().equals("smith"));
+        Assert.assertTrue(findppl.get(0).getAge()==20);
 
     }
 }
